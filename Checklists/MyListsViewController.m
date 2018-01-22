@@ -8,11 +8,13 @@
 
 #import "MyListsViewController.h"
 #import "MyListsTableViewCell.h"
+#import "MyListItem.h"
 
 @interface MyListsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) NSArray *arrayOfText;
+@property (strong, nonatomic) NSArray <MyListItem *>*arrayOfItems;
+
 @end
 
 @implementation MyListsViewController
@@ -23,12 +25,13 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.arrayOfText = @[
-                         @"Walk the dog"
-                         , @"Brush my teeth"
-                         , @"Learn iOS development"
-                         , @"Soccer practice"
-                         , @"Eat ice cream"
+    self.arrayOfItems = @[
+                         [[MyListItem alloc] initWithString:@"Walk the dog" checkMarkValue:NO]
+                         , [[MyListItem alloc] initWithString:@"Brush my teeth" checkMarkValue:NO]
+                         , [[MyListItem alloc] initWithString:@"Learn iOS development" checkMarkValue:NO]
+                         , [[MyListItem alloc] initWithString:@"Soccer practice" checkMarkValue:NO]
+                         , [[MyListItem alloc] initWithString:@"Eat ice cream" checkMarkValue:NO]
+                         , [[MyListItem alloc] initWithString:@"Go to sleep" checkMarkValue:NO]
                          ];
 }
 
@@ -36,7 +39,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 100;
+    return self.arrayOfItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -44,21 +47,32 @@
     MyListsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyListsTableViewCell" forIndexPath:indexPath];
     
     NSInteger row = indexPath.row;
-    cell.listName.text = [NSString stringWithFormat:@"%ld) %@", (long)row, self.arrayOfText[row % self.arrayOfText.count]];
+    MyListItem *item = self.arrayOfItems[row];
+    cell.listName.text = [NSString stringWithFormat:@"%ld) %@", (long)row, item.text];
+    
+    BOOL checkmarkExists = item.checked;
+    
+    if (checkmarkExists) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger row = indexPath.row;
+    MyListItem *item = self.arrayOfItems[row];
+    [item toggleCheck];
+    
     UITableViewCell *cell;
     if ((cell = [tableView cellForRowAtIndexPath:indexPath])) {
-        if (cell.accessoryType == UITableViewCellAccessoryNone) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
+        cell.accessoryType = item.checked ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
