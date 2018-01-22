@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MyListsViewController.h
 //  Checklists
 //
 //  Created by Derrick Ho on 1/21/18.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MyListsViewController : UIViewController
 
 
 @end
