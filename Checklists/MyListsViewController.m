@@ -33,6 +33,8 @@
                          , [[MyListItem alloc] initWithString:@"Eat ice cream" checkMarkValue:NO]
                          , [[MyListItem alloc] initWithString:@"Go to sleep" checkMarkValue:NO]
                          ];
+    
+    self.navigationController.navigationBar.prefersLargeTitles = true;
 }
 
 #pragma mark - TableView Data Source and Delegate
@@ -73,6 +75,27 @@
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSMutableArray *copy = self.arrayOfItems.mutableCopy;
+        [copy removeObjectAtIndex:indexPath.row];
+        self.arrayOfItems = [NSArray arrayWithArray:copy];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+#pragma mark - Actions
+
+- (IBAction)addItem:(id)sender {
+    MyListItem *newItem = [[MyListItem alloc] initWithString:@"New Item" checkMarkValue:YES];
+    
+    self.arrayOfItems = [self.arrayOfItems arrayByAddingObject:newItem];
+    
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.arrayOfItems.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
