@@ -93,14 +93,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EQC-GC-r4M">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EQC-GC-r4M">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="999" constant="44" id="9rT-Qz-eFd"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="tappedDone:" destination="o4b-lQ-e5c" eventType="editingDidEndOnExit" id="XdR-Jj-Ltm"/>
+                                                        <action selector="textfieldDidEdit:" destination="o4b-lQ-e5c" eventType="editingChanged" id="SX6-K5-Zf2"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -128,12 +132,15 @@
                                 <action selector="tappedCancel:" destination="o4b-lQ-e5c" id="JpG-In-j10"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FZb-1i-a0C">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="FZb-1i-a0C">
                             <connections>
                                 <action selector="tappedDone:" destination="o4b-lQ-e5c" id="OIH-8r-u2g"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="EQC-GC-r4M" id="eNA-P8-VsQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxm-TZ-loY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

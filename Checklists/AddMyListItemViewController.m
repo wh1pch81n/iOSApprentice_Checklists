@@ -9,7 +9,7 @@
 #import "AddMyListItemViewController.h"
 
 @interface AddMyListItemViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 @end
 
 @implementation AddMyListItemViewController
@@ -19,6 +19,15 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeNever;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.textField becomeFirstResponder];
+}
+
+- (void)enableDoneButtonBasedOnTextfieldText {
+    self.navigationItem.rightBarButtonItem.enabled = (self.textField.text.length) ? YES : NO;
 }
 
 #pragma mark - TableView Delegate
@@ -35,6 +44,12 @@
 
 - (IBAction)tappedDone:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Textfield delegate
+
+- (IBAction)textfieldDidEdit:(id)sender {
+    [self enableDoneButtonBasedOnTextfieldText];
 }
 
 @end
