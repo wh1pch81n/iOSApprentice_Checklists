@@ -40,7 +40,7 @@
 #pragma mark - Navigation
 
 - (IBAction)tappedCancel:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate addItemViewControllerDidCancel:self];
 }
 
 - (IBAction)tappedDone:(id)sender {

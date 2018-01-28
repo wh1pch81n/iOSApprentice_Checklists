@@ -93,7 +93,7 @@
 
 - (void)addItemViewControllerDidCancel:(AddMyListItemViewController *)addItemViewController
 {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)addItemViewController:(AddMyListItemViewController *)addItemViewController didFinishAddingItem:(MyListItem *)listItem
