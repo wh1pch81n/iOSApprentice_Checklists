@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2294F7FD201C3B15007E3419 /* AddMyListItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2294F7FC201C3B15007E3419 /* AddMyListItemViewController.m */; };
+		22FE3707201D49980073C30F /* AddMyListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FE3706201D49980073C30F /* AddMyListItemTableViewCell.m */; };
 		7FB9352820157597004D0A5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB9352720157597004D0A5C /* AppDelegate.m */; };
 		7FB9352B20157597004D0A5C /* MyListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB9352A20157597004D0A5C /* MyListsViewController.m */; };
 		7FB9352E20157597004D0A5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FB9352C20157597004D0A5C /* Main.storyboard */; };
@@ -21,6 +22,8 @@
 /* Begin PBXFileReference section */
 		2294F7FB201C3B15007E3419 /* AddMyListItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyListItemViewController.h; sourceTree = "<group>"; };
 		2294F7FC201C3B15007E3419 /* AddMyListItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyListItemViewController.m; sourceTree = "<group>"; };
+		22FE3705201D49980073C30F /* AddMyListItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyListItemTableViewCell.h; sourceTree = "<group>"; };
+		22FE3706201D49980073C30F /* AddMyListItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyListItemTableViewCell.m; sourceTree = "<group>"; };
 		7FB9352320157597004D0A5C /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FB9352620157597004D0A5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7FB9352720157597004D0A5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 				2294F7FC201C3B15007E3419 /* AddMyListItemViewController.m */,
 				7FB9353F2015A849004D0A5C /* MyListItem.h */,
 				7FB935402015A849004D0A5C /* MyListItem.m */,
+				22FE3705201D49980073C30F /* AddMyListItemTableViewCell.h */,
+				22FE3706201D49980073C30F /* AddMyListItemTableViewCell.m */,
 				7FB9352C20157597004D0A5C /* Main.storyboard */,
 				7FB9352F20157597004D0A5C /* Assets.xcassets */,
 				7FB9353120157597004D0A5C /* LaunchScreen.storyboard */,
@@ -162,6 +167,7 @@
 				7FB9352B20157597004D0A5C /* MyListsViewController.m in Sources */,
 				7FB9353E2015864C004D0A5C /* MyListsTableViewCell.m in Sources */,
 				7FB9353620157597004D0A5C /* main.m in Sources */,
+				22FE3707201D49980073C30F /* AddMyListItemTableViewCell.m in Sources */,
 				7FB9352820157597004D0A5C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
