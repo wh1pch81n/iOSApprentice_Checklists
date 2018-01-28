@@ -9,8 +9,9 @@
 #import "MyListsViewController.h"
 #import "MyListsTableViewCell.h"
 #import "MyListItem.h"
+#import "AddMyListItemViewController.h"
 
-@interface MyListsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MyListsViewController () <UITableViewDataSource, UITableViewDelegate, AddMyListItemViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray <MyListItem *>*arrayOfItems;
@@ -88,14 +89,40 @@
     }
 }
 
+#pragma mark - AddMyListItemViewControllerDelegate
+
+- (void)addItemViewControllerDidCancel:(AddMyListItemViewController *)addItemViewController
+{
+    
+}
+
+- (void)addItemViewController:(AddMyListItemViewController *)addItemViewController didFinishAddingItem:(MyListItem *)listItem
+{
+    [self appendListItem:listItem];
+}
+
 #pragma mark - Actions
 
 - (IBAction)addItem:(id)sender {
     MyListItem *newItem = [[MyListItem alloc] initWithString:@"New Item" checkMarkValue:YES];
     
-    self.arrayOfItems = [self.arrayOfItems arrayByAddingObject:newItem];
+    [self appendListItem:newItem];
+}
+
+- (void)appendListItem:(MyListItem *)listItem
+{
+    self.arrayOfItems = [self.arrayOfItems arrayByAddingObject:listItem];
     
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.arrayOfItems.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[AddMyListItemViewController class]])
+    {
+        AddMyListItemViewController *addListVC = segue.destinationViewController;
+        
+        addListVC.delegate = self;
+    }
 }
 
 @end

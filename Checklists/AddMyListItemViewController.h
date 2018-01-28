@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddMyListItemViewController : UITableViewController
+@class MyListItem;
+@class AddMyListItemViewController;
 
+@protocol AddMyListItemViewControllerDelegate <NSObject>
+- (void)addItemViewControllerDidCancel:(AddMyListItemViewController *)addItemViewController;
+- (void)addItemViewController:(AddMyListItemViewController *)addItemViewController didFinishAddingItem:(MyListItem *)listItem;
+@end
+
+@interface AddMyListItemViewController : UITableViewController
+@property (weak, nonatomic) id<AddMyListItemViewControllerDelegate> delegate;
 @end

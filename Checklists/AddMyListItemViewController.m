@@ -7,6 +7,7 @@
 //
 
 #import "AddMyListItemViewController.h"
+#import "MyListItem.h"
 
 @interface AddMyListItemViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -43,6 +44,8 @@
 }
 
 - (IBAction)tappedDone:(id)sender {
+    MyListItem *listItem = [[MyListItem alloc] initWithString:self.textField.text checkMarkValue:NO];
+    [self.delegate addItemViewController:self didFinishAddingItem:listItem];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
