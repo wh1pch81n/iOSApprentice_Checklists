@@ -8,7 +8,31 @@
 
 #import "MyListsTableViewCell.h"
 
-@implementation MyListsTableViewCell
+@interface MyListsTableViewCell ()
+@property (nonatomic, strong) IBOutlet UILabel *checkmark;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *checkmarkWidthConstraint;
+@end
+
+@implementation MyListsTableViewCell {
+    BOOL _checkmarkVisible;
+}
+
+- (BOOL)checkmarkVisible {
+    return _checkmarkVisible;
+}
+
+- (void)setCheckmarkVisible:(BOOL)checkmarkVisible {
+    _checkmarkVisible  = checkmarkVisible;
+    if (_checkmarkVisible) {
+        _checkmarkWidthConstraint.active = NO;
+    } else {
+        _checkmarkWidthConstraint.active = YES;
+        _checkmarkWidthConstraint.constant = 0;
+    }
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.contentView layoutIfNeeded];
+    }];
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

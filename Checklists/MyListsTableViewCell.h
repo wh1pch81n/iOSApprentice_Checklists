@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *listName;
 
+
+@property BOOL checkmarkVisible;
+
 @end

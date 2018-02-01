@@ -38,6 +38,8 @@
     self.navigationController.navigationBar.prefersLargeTitles = true;
 }
 
+
+
 #pragma mark - TableView Data Source and Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -55,11 +57,7 @@
     
     BOOL checkmarkExists = item.checked;
     
-    if (checkmarkExists) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    cell.checkmarkVisible = checkmarkExists;
     
     return cell;
 }
@@ -70,9 +68,9 @@
     MyListItem *item = self.arrayOfItems[row];
     [item toggleCheck];
     
-    UITableViewCell *cell;
-    if ((cell = [tableView cellForRowAtIndexPath:indexPath])) {
-        cell.accessoryType = item.checked ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    MyListsTableViewCell *cell;
+    if ((cell = [tableView cellForRowAtIndexPath:indexPath]) && [cell isKindOfClass:[MyListsTableViewCell class]]) {
+       cell.checkmarkVisible = item.checked;
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
