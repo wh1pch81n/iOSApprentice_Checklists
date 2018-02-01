@@ -12,10 +12,12 @@
 @class AddMyListItemViewController;
 
 @protocol AddMyListItemViewControllerDelegate <NSObject>
-- (void)addItemViewControllerDidCancel:(AddMyListItemViewController *)addItemViewController;
-- (void)addItemViewController:(AddMyListItemViewController *)addItemViewController didFinishAddingItem:(MyListItem *)listItem;
+- (void)addItemViewControllerDidCancel:(AddMyListItemViewController *_Nonnull)addItemViewController;
+- (void)addItemViewController:(AddMyListItemViewController *_Nonnull)addItemViewController didFinishAddingItem:(MyListItem *_Nonnull)listItem;
 @end
 
 @interface AddMyListItemViewController : UITableViewController
-@property (weak, nonatomic) id<AddMyListItemViewControllerDelegate> delegate;
+@property (weak, nonatomic, nullable) id<AddMyListItemViewControllerDelegate> delegate;
+
+@property (strong, nonatomic, nullable) MyListItem *listItemToEdit; // If this value is null, we are adding.  If it is nonnull it means we are editing.
 @end

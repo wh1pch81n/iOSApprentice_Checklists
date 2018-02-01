@@ -10,6 +10,7 @@
 #import "MyListsTableViewCell.h"
 #import "MyListItem.h"
 #import "AddMyListItemViewController.h"
+#import "UIViewController_Extension.h"
 
 @interface MyListsViewController () <UITableViewDataSource, UITableViewDelegate, AddMyListItemViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -62,6 +63,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    AddMyListItemViewController *vc = [AddMyListItemViewController createFromStoryboard:StoryboardNameMain];
+    vc.listItemToEdit = self.arrayOfItems[indexPath.row];
+    vc.delegate = self;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger row = indexPath.row;
@@ -96,7 +104,14 @@
 
 - (void)addItemViewController:(AddMyListItemViewController *)addItemViewController didFinishAddingItem:(MyListItem *)listItem
 {
-    [self appendListItem:listItem];
+    if (addItemViewController.listItemToEdit) {
+        addItemViewController.listItemToEdit.text = listItem.text;
+        [self.tableView reloadData];
+    } else {
+        [self appendListItem:listItem];
+    }
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 #pragma mark - Actions
