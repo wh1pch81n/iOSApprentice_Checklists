@@ -6,14 +6,14 @@
 //  Copyright © 2018 Derrick Ho. All rights reserved.
 //
 
-#import "AddMyListItemViewController.h"
+#import "AddEditMyListItemViewController.h"
 #import "MyListItem.h"
 
-@interface AddMyListItemViewController ()
+@interface AddEditMyListItemViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @end
 
-@implementation AddMyListItemViewController
+@implementation AddEditMyListItemViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,8 +47,13 @@
 }
 
 - (IBAction)tappedDone:(id)sender {
-    MyListItem *listItem = [[MyListItem alloc] initWithString:self.textField.text checkMarkValue:NO];
-    [self.delegate addItemViewController:self didFinishAddingItem:listItem];
+    if (_listItemToEdit) {
+        _listItemToEdit.text = self.textField.text;
+        [self.delegate addItemViewController:self didFinishEditingItem:_listItemToEdit];
+    } else {
+        MyListItem *listItem = [[MyListItem alloc] initWithString:self.textField.text checkMarkValue:NO];
+        [self.delegate addItemViewController:self didFinishAddingItem:listItem];
+    }
 }
 
 #pragma mark - Textfield delegate

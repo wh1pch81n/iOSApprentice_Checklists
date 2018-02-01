@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2294F7FD201C3B15007E3419 /* AddMyListItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2294F7FC201C3B15007E3419 /* AddMyListItemViewController.m */; };
+		2294F7FD201C3B15007E3419 /* AddEditMyListItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2294F7FC201C3B15007E3419 /* AddEditMyListItemViewController.m */; };
 		22CF90572022DA7200175CC8 /* UIViewController_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22CF90562022DA7200175CC8 /* UIViewController_Extension.m */; };
 		22FE3707201D49980073C30F /* AddMyListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FE3706201D49980073C30F /* AddMyListItemTableViewCell.m */; };
 		7FB9352820157597004D0A5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FB9352720157597004D0A5C /* AppDelegate.m */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2294F7FB201C3B15007E3419 /* AddMyListItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyListItemViewController.h; sourceTree = "<group>"; };
-		2294F7FC201C3B15007E3419 /* AddMyListItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMyListItemViewController.m; sourceTree = "<group>"; };
+		2294F7FB201C3B15007E3419 /* AddEditMyListItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddEditMyListItemViewController.h; sourceTree = "<group>"; };
+		2294F7FC201C3B15007E3419 /* AddEditMyListItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddEditMyListItemViewController.m; sourceTree = "<group>"; };
 		22CF90552022DA7200175CC8 /* UIViewController_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewController_Extension.h; sourceTree = "<group>"; };
 		22CF90562022DA7200175CC8 /* UIViewController_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewController_Extension.m; sourceTree = "<group>"; };
 		22FE3705201D49980073C30F /* AddMyListItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMyListItemTableViewCell.h; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 				7FB9352A20157597004D0A5C /* MyListsViewController.m */,
 				7FB9353C2015864C004D0A5C /* MyListsTableViewCell.h */,
 				7FB9353D2015864C004D0A5C /* MyListsTableViewCell.m */,
-				2294F7FB201C3B15007E3419 /* AddMyListItemViewController.h */,
-				2294F7FC201C3B15007E3419 /* AddMyListItemViewController.m */,
+				2294F7FB201C3B15007E3419 /* AddEditMyListItemViewController.h */,
+				2294F7FC201C3B15007E3419 /* AddEditMyListItemViewController.m */,
 				7FB9353F2015A849004D0A5C /* MyListItem.h */,
 				7FB935402015A849004D0A5C /* MyListItem.m */,
 				22FE3705201D49980073C30F /* AddMyListItemTableViewCell.h */,
@@ -169,7 +169,7 @@
 			files = (
 				22CF90572022DA7200175CC8 /* UIViewController_Extension.m in Sources */,
 				7FB935412015A849004D0A5C /* MyListItem.m in Sources */,
-				2294F7FD201C3B15007E3419 /* AddMyListItemViewController.m in Sources */,
+				2294F7FD201C3B15007E3419 /* AddEditMyListItemViewController.m in Sources */,
 				7FB9352B20157597004D0A5C /* MyListsViewController.m in Sources */,
 				7FB9353E2015864C004D0A5C /* MyListsTableViewCell.m in Sources */,
 				7FB9353620157597004D0A5C /* main.m in Sources */,

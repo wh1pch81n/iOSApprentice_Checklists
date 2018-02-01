@@ -9,10 +9,10 @@
 #import "MyListsViewController.h"
 #import "MyListsTableViewCell.h"
 #import "MyListItem.h"
-#import "AddMyListItemViewController.h"
+#import "AddEditMyListItemViewController.h"
 #import "UIViewController_Extension.h"
 
-@interface MyListsViewController () <UITableViewDataSource, UITableViewDelegate, AddMyListItemViewControllerDelegate>
+@interface MyListsViewController () <UITableViewDataSource, UITableViewDelegate, AddEditMyListItemViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray <MyListItem *>*arrayOfItems;
@@ -64,7 +64,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    AddMyListItemViewController *vc = [AddMyListItemViewController createFromStoryboard:StoryboardNameMain];
+    AddEditMyListItemViewController *vc = [AddEditMyListItemViewController createFromStoryboard:StoryboardNameMain];
     vc.listItemToEdit = self.arrayOfItems[indexPath.row];
     vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
@@ -97,20 +97,19 @@
 
 #pragma mark - AddMyListItemViewControllerDelegate
 
-- (void)addItemViewControllerDidCancel:(AddMyListItemViewController *)addItemViewController
+- (void)addItemViewControllerDidCancel:(AddEditMyListItemViewController *)addItemViewController
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)addItemViewController:(AddMyListItemViewController *)addItemViewController didFinishAddingItem:(MyListItem *)listItem
+- (void)addItemViewController:(AddEditMyListItemViewController *)addItemViewController didFinishAddingItem:(MyListItem *)listItem
 {
-    if (addItemViewController.listItemToEdit) {
-        addItemViewController.listItemToEdit.text = listItem.text;
-        [self.tableView reloadData];
-    } else {
-        [self appendListItem:listItem];
-    }
-    
+    [self appendListItem:listItem];
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (void)addItemViewController:(id)addItemViewController didFinishEditingItem:(MyListItem *)listItem {
+    [self.tableView reloadData];
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -130,9 +129,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[AddMyListItemViewController class]])
+    if ([segue.destinationViewController isKindOfClass:[AddEditMyListItemViewController class]])
     {
-        AddMyListItemViewController *addListVC = segue.destinationViewController;
+        AddEditMyListItemViewController *addListVC = segue.destinationViewController;
         
         addListVC.delegate = self;
     }
